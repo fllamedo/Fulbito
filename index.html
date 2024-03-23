@@ -6,10 +6,6 @@
     <title>Fulbito5</title>
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
             margin: 0;
             padding: 20px;
             box-sizing: border-box;
@@ -17,15 +13,17 @@
 
         .container {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             align-items: flex-start;
             gap: 20px;
-            width: 100%;
             max-width: 1200px;
+            margin: 0 auto;
         }
 
         .column {
-            width: 30%;
+            width: 100%;
+            max-width: 400px;
         }
 
         .form-container {
@@ -215,26 +213,25 @@
             return result;
         }
 
-function mostrarEquipos(equipo1, equipo2) {
-    var equipo1Select = document.getElementById("equipo1");
-    var equipo2Select = document.getElementById("equipo2");
+        function mostrarEquipos(equipo1, equipo2) {
+            var equipo1Select = document.getElementById("equipo1");
+            var equipo2Select = document.getElementById("equipo2");
 
-    equipo1Select.innerHTML = "";
-    equipo2Select.innerHTML = "";
+            equipo1Select.innerHTML = "";
+            equipo2Select.innerHTML = "";
 
-    equipo1.forEach(jugador => {
-        var option = document.createElement("option");
-        option.text = jugador.nombre;
-        equipo1Select.add(option);
-    });
+                        equipo1.forEach(jugador => {
+                var option = document.createElement("option");
+                option.text = jugador.nombre;
+                equipo1Select.add(option);
+            });
 
-    equipo2.forEach(jugador => {
-        var option = document.createElement("option");
-        option.text = jugador.nombre;
-        equipo2Select.add(option);
-    });
-}
-
+            equipo2.forEach(jugador => {
+                var option = document.createElement("option");
+                option.text = jugador.nombre;
+                equipo2Select.add(option);
+            });
+        }
 
         function calcularValorEquipos(equipo1, equipo2) {
             var valorEquipo1 = equipo1.reduce((total, jugador) => total + jugador.habilidades.reduce((subtotal, habilidad) => subtotal + habilidad, 0), 0);
@@ -243,7 +240,7 @@ function mostrarEquipos(equipo1, equipo2) {
             alert("El valor del equipo 1 es: " + valorEquipo1 + "\nEl valor del equipo 2 es: " + valorEquipo2);
         }
 
-                function copiarEquipos() {
+        function copiarEquipos() {
             var equipo1Text = "";
             var equipo2Text = "";
 
@@ -296,6 +293,7 @@ function mostrarEquipos(equipo1, equipo2) {
                 <label for="hab9">Definición:</label>
                 <input type="number" id="hab9" min="0" max="10"><br><br>
 
+                <div class="button-container">
                     <button onclick="agregarJugador()">Agregar Jugador</button>
                     <button onclick="eliminarJugador()">Eliminar Jugador</button>
                     <button onclick="editarJugador()">Editar Jugador</button>
@@ -305,6 +303,7 @@ function mostrarEquipos(equipo1, equipo2) {
                 <h2>Editar Jugador</h2>
                 <label for="editarJugador">Seleccionar Jugadores con CTRL+click:</label>
                 <select id="editarJugador" multiple></select>
+            </div>
         </div>
         <div class="column">
             <div class="form-container">
@@ -312,15 +311,18 @@ function mostrarEquipos(equipo1, equipo2) {
                 <div class="button-container">
                     <button onclick="formarEquipos()">Formar Equipos</button>
                     <button onclick="copiarEquipos()">Copiar Equipos</button>
-            <div class="form-container">
-
+                </div>
+                <div class="form-container">
                     <h3>Equipo 1</h3>
                     <select id="equipo1" multiple></select>
                     <h3>Equipo 2</h3>
                     <select id="equipo2" multiple></select>
-
-    <div id="donation-button">
-        <button onclick="redirectToDonationPage()">Donación para el creador</button>
+                </div>
+            </div>
+            <div id="donation-button">
+                <button onclick="redirectToDonationPage()">Donación para el creador</button>
+            </div>
+        </div>
     </div>
 </body>
 </html>
