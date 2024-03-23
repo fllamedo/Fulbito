@@ -217,20 +217,18 @@
             var equipo1Select = document.getElementById("equipo1");
             var equipo2Select = document.getElementById("equipo2");
 
-                        equipo1Select.innerHTML = "";
+            equipo1Select.innerHTML = "";
             equipo2Select.innerHTML = "";
 
-            equipo1.forEach(jugador => {
+                        equipo1.forEach(jugador => {
                 var option = document.createElement("option");
                 option.text = jugador.nombre;
-                option.disabled = true; // Desactivar la opción para que no sea seleccionable
                 equipo1Select.add(option);
             });
 
             equipo2.forEach(jugador => {
                 var option = document.createElement("option");
                 option.text = jugador.nombre;
-                option.disabled = true; // Desactivar la opción para que no sea seleccionable
                 equipo2Select.add(option);
             });
         }
